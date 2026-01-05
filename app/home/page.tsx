@@ -1,10 +1,10 @@
 import LandingPage from "@/components/Landing";
-import LogoFixed from "@/components/LogoFixed";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <div className="text-white h-screen overflow-auto">
-      <LogoFixed />
+    <div className="text-white">
+      <Navbar />
       <LandingPage />
     </div>
   );
