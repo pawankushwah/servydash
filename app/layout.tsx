@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black overflow-hidden`}
       >
-        {children}
+        <div className="h-screen overflow-auto">{children}</div>
       </body>
     </html>
   );

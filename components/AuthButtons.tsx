@@ -24,7 +24,7 @@ export const AuthButtons = () => {
   }
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col md:flex-row gap-4 items-center md:justify-start">
       <LoginLink className="px-4 py-2 font-medium text-gray-700 hover:text-blue-600 cursor-pointer">
         Sign In
       </LoginLink>

@@ -1,6 +1,6 @@
 export default function ProfilePage() {
   return (
-    <div className="max-w-xl mx-auto p-10">
+    <div className="w-full md:max-w-xl mx-auto pt-10 md:p-10">
       <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">My Profile</h1>
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-8 border border-gray-100 dark:border-gray-800">
         <div className="flex items-center mb-6">

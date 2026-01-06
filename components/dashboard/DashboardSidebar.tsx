@@ -103,14 +103,16 @@ const bottomLinks = [
 
 export default function DashboardSidebar() {
   const [expandedParent, setExpandedParent] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
 
   // Helper to get children for expanded parent
   const expandedChildren = expandedParent
     ? links.find((l) => l.label === expandedParent)?.children || []
     : [];
 
-  return (
-    <aside className="min-h-screen max-h-screen w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col p-3">
+  // Sidebar content as a component for reuse
+  const SidebarContent = (
+    <div className="flex flex-col h-full">
       <div className="mb-8">
         <div className="text-2xl font-bold text-slate-900 bg-white p-2 rounded-lg dark:bg-gray-800 dark:text-white">
           Servy<span className="text-cyan-500">Dash</span>
@@ -192,7 +194,7 @@ export default function DashboardSidebar() {
               <DashboardButton icon={link.icon}>{link.label}</DashboardButton>
             </Link>
           ))}
-          <Link href="/logout">
+          <Link href="/">
             <DashboardButton
               icon={<LogOut size={18} className="mr-2" />}
               className="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-500 dark:hover:bg-red-500/20"
@@ -202,6 +204,63 @@ export default function DashboardSidebar() {
           </Link>
         </div>
       </nav>
-    </aside>
+    </div>
+  );
+
+  return (
+    <>
+      {/* Mobile sidebar toggle button */}
+      <button
+        className="fixed top-4 left-4 z-40 md:hidden bg-cyan-500 text-white p-2 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+        onClick={() => setOpen(true)}
+        aria-label="Open sidebar"
+      >
+        <LayoutDashboard size={24} />
+      </button>
+
+      {/* Sidebar for desktop */}
+      <aside className="hidden md:flex min-h-screen max-h-screen w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex-col p-3">
+        {SidebarContent}
+      </aside>
+
+      {/* Sidebar overlay for mobile */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="mobile-sidebar"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex"
+          >
+            {/* Overlay background */}
+            <div
+              className="absolute inset-0 bg-black/40"
+              onClick={() => setOpen(false)}
+              aria-label="Close sidebar overlay"
+            />
+            {/* Sidebar panel */}
+            <motion.aside
+              initial={{ x: -300 }}
+              animate={{ x: 0 }}
+              exit={{ x: -300 }}
+              transition={{ duration: 0.25 }}
+              className="relative min-h-screen w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col p-3 z-50 shadow-xl"
+            >
+              {/* Close button */}
+              <button
+                className="absolute top-3 -right-10 text-gray-500 hover:text-cyan-500 focus:outline-none"
+                onClick={() => setOpen(false)}
+                aria-label="Close sidebar"
+              >
+                <ArrowLeft size={24} />
+              </button>
+              {SidebarContent}
+            </motion.aside>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

@@ -39,21 +39,11 @@ export default function Dashboard() {
     { type: "Course", value: 9 },
   ];
   return (
-     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-950">
-      {/* <main className="flex-1 p-10">
-        <h1 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">Welcome to your Dashboard</h1>
-        <Image
-          src="/dash.png"
-          alt="Dashboard Illustration"
-          width={500}
-          height={500}
-          className="mx-auto"
-        />
-      </main> */}
-      <div className="max-w-4xl mx-auto p-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 border border-gray-100 dark:border-gray-800">
-            <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Services Added (Last 6 Months)</h2>
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-950">
+      <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 md:px-8 py-6 md:py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 sm:p-6 border border-gray-100 dark:border-gray-800">
+            <h2 className="text-base sm:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Services Added (Last 6 Months)</h2>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={serviceData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -65,8 +55,8 @@ export default function Dashboard() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 border border-gray-100 dark:border-gray-800">
-            <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Transactions</h2>
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 sm:p-6 border border-gray-100 dark:border-gray-800">
+            <h2 className="text-base sm:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Transactions</h2>
             <ResponsiveContainer width="100%" height={220}>
               <PieChart>
                 <Pie
@@ -76,7 +66,7 @@ export default function Dashboard() {
                   cx="50%"
                   cy="50%"
                   outerRadius={70}
-                  label
+                  // label
                 >
                   {transactionData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -88,9 +78,9 @@ export default function Dashboard() {
             </ResponsiveContainer>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 border border-gray-100 dark:border-gray-800">
-            <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Revenue (Last 6 Months)</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 sm:p-6 border border-gray-100 dark:border-gray-800">
+            <h2 className="text-base sm:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Revenue (Last 6 Months)</h2>
             <ResponsiveContainer width="100%" height={220}>
               <LineChart data={revenueData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -102,8 +92,8 @@ export default function Dashboard() {
               </LineChart>
             </ResponsiveContainer>
           </div>
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 border border-gray-100 dark:border-gray-800">
-            <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Product Types</h2>
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 sm:p-6 border border-gray-100 dark:border-gray-800">
+            <h2 className="text-base sm:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Product Types</h2>
             <ResponsiveContainer width="100%" height={220}>
               <RadarChart cx="50%" cy="50%" outerRadius={70} data={productTypeData}>
                 <PolarGrid />

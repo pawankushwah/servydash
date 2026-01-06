@@ -48,14 +48,14 @@ export default function AddProductForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label className="block text-sm font-medium mb-2">Service Title</label>
           <input {...register("title")} className="w-full p-2 border rounded-md" placeholder="e.g. Master Python E-book" />
           {errors.title && <p className="text-red-500 text-xs mt-1">{errors.title.message}</p>}
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium mb-2">Type</label>
             <select {...register("type")} className="w-full p-2 border rounded-md dark:bg-gray-600 h-10.5">
