@@ -5,13 +5,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { productSchema, ProductFormValues, ProductFormInput } from "@/lib/validations/product";
 import { createProduct } from "@/app/actions/productActions";
 import { useState } from "react";
+import { IProduct } from "@/types";
 
 export default function AddProductForm() {
   const [loading, setLoading] = useState(false);
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<ProductFormInput>({
     resolver: zodResolver(productSchema),
-    defaultValues: { type: "file", price: 0, eventDate: "" }
+    defaultValues: { type: "file", price: "0", eventDate: new Date() },
   });
 
   const selectedType = watch("type");
@@ -29,10 +30,10 @@ export default function AddProductForm() {
         }
       }
       const payload: ProductFormValues = {
-        ...data,
+        ...data as ProductFormValues,
         eventDate,
       };
-      const result = await createProduct(payload);
+      const result = await createProduct(payload as unknown as Partial<IProduct>);
       if (result.success) {
         alert("Product listed on ServyDash!");
       } else {
