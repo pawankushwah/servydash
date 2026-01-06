@@ -22,7 +22,7 @@ export default async function DashboardProductPage() {
 
   return (
     <div className="max-w-7xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">All Products</h1>
+      <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">All Services</h1>
       {products.length === 0 ? (
         <div className="text-gray-400 text-center py-20 bg-white dark:bg-gray-900 rounded-3xl border-2 border-dashed">
           <p>No products found on ServyDash yet.</p>

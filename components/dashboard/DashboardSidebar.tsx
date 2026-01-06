@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 
 const links = [
   {
@@ -194,14 +195,14 @@ export default function DashboardSidebar() {
               <DashboardButton icon={link.icon}>{link.label}</DashboardButton>
             </Link>
           ))}
-          <Link href="/">
+          <LogoutLink href="/">
             <DashboardButton
               icon={<LogOut size={18} className="mr-2" />}
               className="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-500 dark:hover:bg-red-500/20"
             >
               Log Out
             </DashboardButton>
-          </Link>
+          </LogoutLink>
         </div>
       </nav>
     </div>

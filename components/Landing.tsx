@@ -166,13 +166,13 @@ export default function LandingPage() {
                 Go to Blogs
                 <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button
+              {/* <button
                 onClick={() => router.push("/dashboard/blogs/new")}
                 className="w-full xs:w-1/2 min-w-[140px] px-8 py-4 bg-white text-cyan-600 border border-cyan-200 rounded-xl font-bold text-lg cursor-pointer hover:bg-cyan-50 transition-all flex items-center gap-2 group"
               >
                 Start Creating Blog
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
